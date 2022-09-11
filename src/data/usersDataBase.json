@@ -1,0 +1,11 @@
+[
+   {
+      "id": 1,
+      "name": "jose",
+      "surname": "roberto",
+      "email": "admin@gmail.com",
+      "pass": "$2a$10$uKUAEz6PetVlIy6anTFol.6cSSNWoX5QE7HB2.8egbEPULL56ULTy",
+      "avatar": "default.png",
+      "rol": "user"
+   }
+]

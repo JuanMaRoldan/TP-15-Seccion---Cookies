@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Formulario de creación'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Registrate</h2>
+			</div>
+		    <div class="col-12">
+			    <form id="register" action="" method="POST">
+                    <div class="row product-detail">
+                        <div class="col-12 col-md-6">
+                            <label for="name" class="form-label">Nombre:</label>
+                            <input type="text" name="name" id="name" class="form-input" value="<%= locals.old && old.name ? old.name : null %>" title="El nombre debe tener mas de 2 caracteres"/>
+                            <small id="errorNombre" class="text-danger"><%= locals.errors && errors.name ? errors.name.msg : null %></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="surname" class="form-label">Apellido:</label>
+                            <input type="text" name="surname" id="surname" class="form-input" value="<%= locals.old && old.surname ? old.surname : null %>" title="El Apellido debe tener mas de 2 caracteres"/>
+                            <small id="errorApellido" class="text-danger"><%= locals.errors && errors.surname ? errors.surname.msg : null %></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" name="email" id="email" class="form-input" value="<%= locals.old && old.email ? old.email : null %>" title="El E-mail tiene que ser valido"/>
+                            <small id="errorEmail" class="text-danger"><%= locals.errors && errors.email ? errors.email.msg : null %></small>
+                        </div>
+						<div class="col-12 col-md-6">
+                            <label for="pass" class="form-label">Contraseña:</label>
+                            <input type="password" name="pass" id="pass" class="form-input" value="<%= locals.old && old.pass ? old.pass : null %>" title="Tiene que tener mas de 5 caracteres"/>
+                            <small id="errorPass" class="text-danger"><%= locals.errors && errors.pass ? errors.pass.msg : null %></small>
+                        </div>
+						<div class="col-12 col-md-6">
+                            <label for="pass2" class="form-label">Repita Contraseña:</label>
+                            <input type="password" name="pass2" id="pass2" class="form-input" value="<%= locals.old && old.pass2 ? old.pass2 : null %>" title="Las contraseñas deben coincidir"/>
+                            <small id="errorPass2" class="text-danger"><%= locals.errors && errors.pass2 ? errors.pass2.msg : null %></small>
+                        </div>
+						<div class="col-12 col-md-6">
+							<div class="d-flex justify-content-around align-items-end mt-5" style="flex-wrap: wrap;">
+								<div class="form-check">
+									<input type="checkbox" name="bases" id="flexCheckDefault" class="form-check-input" value=""/>
+									<label for="checkbox" class="form-check-label form-label ms-2">Acepto las Bases y Condiciones</label>
+								</div>
+								<small id="errorBases" class="text-danger"><%= locals.errors && errors.bases ? errors.bases.msg : null %></small>
+								<button type="submit" class="buy-now-button">Registrarse</button>
+							</div>
+                        </div>
+                    </div>
+                </form>
+		    </div>
+        </div>
+	</div>
+	<!-- /todos los productos -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+	<script>
+		document.getElementById('image').addEventListener('change',(e) => {
+			let reader = new FileReader();
+			reader.readAsDataURL(e.target.files[0])
+			reader.onload = () => {
+				document.getElementById('imgPreview').src = reader.result
+			}
+		})
+	</script>
+</body>	
+</html>

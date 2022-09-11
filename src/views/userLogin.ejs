@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Formulario de creación'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Ingresá</h2>
+			</div>
+        </div>
+		    <div class="col-12">
+                <div class="contenido">
+                    <div class="row">
+                        <div class="col-12 col-md-4 d-flex justify-content-center">
+                            <img src="/images/logo-mercado-liebre.svg" alt="">
+                        </div>
+                        <div class="col-12 col-md-8 p-5">
+                            <form action="/users/login" method="POST">
+                                <div class="row product-detail">
+                                    <div class="col-12 col-md-6">
+                                        <label for="exampleImputEmail1" class="form-label">Email:</label>
+                                        <input type="email" name="email" id="exampleImputEmail1" class="form-input" aria-describedby="emailHelp">
+                                        <small class="text-danger"><%= locals.errors && errors.email ? errors.email.msg  : null %> </small>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label for="exampleImputPassword1" class="form-label">Contraseña:</label>
+                                        <input type="password" name="pass" id="exampleImputPassword1" class="form-input">
+                                        <small class="text-danger"><%= locals.errors && errors.pass ? errors.pass.msg  : null %> </small>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" name="remember" id="exampleCheck1" class="form-check-input" value="" style="width:20px; height: 20px;">
+                                            <label for="checkbox" class="form-check-label form-label ms-2">Recordarme</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                                        <button type="submit" class="buy-now-button">Ingresar</button>                                        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+		    </div>
+	</div>
+	<!-- /todos los productos -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+	<script>
+		document.getElementById('image').addEventListener('change',(e) => {
+			let reader = new FileReader();
+			reader.readAsDataURL(e.target.files[0])
+			reader.onload = () => {
+				document.getElementById('imgPreview').src = reader.result
+			}
+		})
+	</script>
+</body>	
+</html>
