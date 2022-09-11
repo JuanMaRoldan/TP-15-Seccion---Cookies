@@ -71,4 +71,9 @@ module.exports = {
         }
         return res.send(errors)
     },
+    logout : (req,res) => {
+        req.session.destroy();
+        res.cookie('mercadoLiebre14', null ,{maxAge: -1})
+        return res.redirect('/')
+    }
 }

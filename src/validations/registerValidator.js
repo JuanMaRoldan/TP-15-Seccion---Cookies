@@ -20,7 +20,16 @@ module.exports = [
     .withMessage("Debes proporcionar un email")
     .bail()
     .isEmail()
-    .withMessage("Debe ser un email válido"),
+    .withMessage("Debe ser un email válido")
+    .custom((value, {req}) => {
+      const user = users.find(user => user.email === value);
+      if (user) {
+          return false
+      }else{
+        return true
+      }
+  })
+    .withMessage('El E-mail ya se encuentra registrado'),
 
   check("pass")
     .isLength({
